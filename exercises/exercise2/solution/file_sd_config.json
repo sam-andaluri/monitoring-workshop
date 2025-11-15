@@ -1,0 +1,21 @@
+[
+  {
+    "targets": [
+      "worker-node:9100"
+    ],
+    "labels": {
+      "job": "node_exporter",
+      "env": "production"
+    }
+  },
+  {
+    "targets": [
+      "worker-node:8000"
+    ],
+    "labels": {
+      "job": "app_exporter",
+      "env": "production",
+      "app": "custom_app"
+    }
+  }
+]

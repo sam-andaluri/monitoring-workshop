@@ -1,0 +1,14 @@
+[Unit]
+Description=Application Metrics Exporter for Prometheus
+After=network.target
+
+[Service]
+Type=simple
+User=prometheus
+WorkingDirectory=/opt/exporters/app_exporter
+ExecStart=/usr/bin/python3 /opt/exporters/app_exporter/app_exporter.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

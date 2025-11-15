@@ -1,0 +1,17 @@
+[Unit]
+Description=Application Metrics Exporter for Prometheus
+After=network.target
+
+[Service]
+Type=simple
+User=prometheus
+
+# TODO: Set the ExecStart to run the Python exporter script
+# Hint: ExecStart= /path/to/file/app_exporter.py
+# ?
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
