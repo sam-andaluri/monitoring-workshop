@@ -7,12 +7,15 @@
       "job": "node_exporter",
       "env": "production"
     }
+  },
+  {
+    "targets": [
+      "worker-node:8000"
+    ],
+    "labels": {
+      "job": "app_exporter",
+      "env": "production",
+      "app": "custom_app"
+    }
   }
-  // TODO: Add a new target configuration for the app_exporter
-  // The exporter runs on worker-node:8000
-  // Add appropriate labels:
-  //   - job: "app_exporter"
-  //   - env: "production"
-  //   - app: "custom_app"
-  // Hint: Follow the same structure as the node_exporter above
 ]

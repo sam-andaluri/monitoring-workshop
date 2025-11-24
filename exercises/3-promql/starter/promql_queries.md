@@ -6,7 +6,6 @@ Complete the following PromQL queries. Fill in the blanks marked with `???`.
 Get the current value of active sessions from the custom app exporter.
 
 ```promql
-# TODO: Write a query to get the app_active_sessions metric
 ???
 ```
 
@@ -18,8 +17,6 @@ Get the current value of active sessions from the custom app exporter.
 Calculate the average number of active sessions over the last 5 minutes.
 
 ```promql
-# TODO: Write a query using avg_over_time() function for app_active_sessions
-# Hint: avg_over_time(metric[time_range])
 ???
 ```
 
@@ -31,8 +28,6 @@ Calculate the average number of active sessions over the last 5 minutes.
 Calculate the CPU usage percentage from node_exporter metrics.
 
 ```promql
-# TODO: Calculate CPU usage percentage using node_cpu_seconds_total
-# Hint: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
 ???
 ```
 
@@ -44,8 +39,6 @@ Calculate the CPU usage percentage from node_exporter metrics.
 Get the available memory in gigabytes from node_exporter.
 
 ```promql
-# TODO: Convert node_memory_MemAvailable_bytes to GB
-# Hint: Divide by (1024^3) to convert bytes to GB
 ???
 ```
 
@@ -57,8 +50,6 @@ Get the available memory in gigabytes from node_exporter.
 Calculate the disk usage percentage for the root filesystem.
 
 ```promql
-# TODO: Calculate disk usage percentage using node_filesystem metrics
-# Hint: (1 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"})) * 100
 ???
 ```
 
@@ -71,7 +62,34 @@ Calculate the disk usage percentage for the root filesystem.
 Write a query that alerts when active sessions drop below 20:
 
 ```promql
-# TODO: Write a query that returns results only when app_active_sessions < 20
-# Hint: Use comparison operators
+???
+```
+
+---
+
+## Additional Useful Queries
+
+### Query 6: Rate of Change in Active Sessions
+```promql
+???
+```
+
+### Query 7: Maximum Active Sessions in Last Hour
+```promql
+???
+```
+
+### Query 8: Network Receive Rate (bytes/sec)
+```promql
+???
+```
+
+### Query 9: System Load Average
+```promql
+???
+```
+
+### Query 10: Memory Usage Percentage
+```promql
 ???
 ```

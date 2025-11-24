@@ -1,4 +1,4 @@
-# Exercise 3: PromQL Queries - Solutions
+# Exercise 3: PromQL Queries
 
 ## Query 1: Current Active Sessions
 Get the current value of active sessions from the custom app exporter.

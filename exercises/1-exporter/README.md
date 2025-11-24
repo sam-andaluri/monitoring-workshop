@@ -25,7 +25,7 @@ Look for `TODO` comments in the starter code.
 
 1. Run the exporter:
    ```bash
-   cd starter
+   cd monitoring-workshop/exercises/1-exporter/starter
    python3 app_exporter.py
    ```
 
@@ -41,7 +41,7 @@ Look for `TODO` comments in the starter code.
    app_active_sessions 45.0
    ```
 
-4. Run it multiple times to see the value change every 5 seconds.
+4. Run curl command multiple times to see the value change every 5 seconds.
 
 ## Expected Output
 - The `/metrics` endpoint should expose the `app_active_sessions` metric

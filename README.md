@@ -111,10 +111,11 @@ exercise<N>/
 
 ## Getting Started
 
-### 1. Clone the Workshop Repository
+### 1. Fork repo (if you want to save your changes)
+
+### 2. Clone (workshop or your forked repo) 
 
 ```bash
-cd /path/to/workshop
 git clone <repository-url>
 cd monitoring-workshop
 ```
@@ -170,30 +171,6 @@ Exercise 5: Visualize in Grafana
 Exercise 6: Advanced Topics
 ```
 
-## Key Concepts Covered
-
-### Prometheus Concepts:
-- Exporters and metrics collection
-- Time series data model
-- PromQL query language
-- Recording rules for optimization
-- Service discovery mechanisms
-- Configuration management
-
-### Grafana Concepts:
-- Data source configuration
-- Dashboard creation
-- Panel types and visualizations
-- Query builder usage
-- Variables and templating
-- Thresholds and alerts
-
-### System Integration:
-- Systemd service management
-- Configuration validation
-- Network service deployment
-- File-based service discovery
-
 ## Validation Tools
 
 Throughout the workshop, you'll use these tools to validate your work:
@@ -208,8 +185,8 @@ promtool check rules /path/to/rules.yml
 # Validate service discovery file
 promtool check sd-file /path/to/targets.json
 
-# Query Prometheus API
-curl 'http://localhost:9090/api/v1/query?query=up'
+# Query Prometheus
+
 
 # Check systemd service status
 systemctl status app-exporter.service
@@ -242,32 +219,6 @@ http://controller-node:9090/targets
 # Verify network connectivity
 curl http://worker-node:8000/metrics
 
-# Check firewall
-sudo firewall-cmd --list-all
-```
-
-**No data in Grafana**:
-```bash
-# Test data source
-http://controller-node:3000/datasources
-
-# Query Prometheus directly
-curl 'http://controller-node:9090/api/v1/query?query=app_active_sessions'
-
-# Check Grafana logs
-sudo journalctl -u grafana-server -f
-```
-
-## Best Practices
-
-1. **Always validate configurations** before reloading services
-2. **Use promtool** for syntax checking
-3. **Check logs** when troubleshooting
-4. **Test queries** in Prometheus UI before using in Grafana
-5. **Follow naming conventions** for metrics and recording rules
-6. **Document your dashboards** with descriptions and notes
-7. **Version control** your configurations
-
 ## Resources
 
 ### Official Documentation:
@@ -281,39 +232,7 @@ sudo journalctl -u grafana-server -f
 - [Grafana Community Dashboards](https://grafana.com/grafana/dashboards/)
 - [Node Exporter Full Dashboard](https://grafana.com/grafana/dashboards/1860)
 
-## Workshop Completion
-
-After completing all exercises, you will:
-
-- ✅ Understand Prometheus architecture and components
-- ✅ Be able to create custom exporters
-- ✅ Know how to configure Prometheus scraping
-- ✅ Write effective PromQL queries
-- ✅ Optimize queries with recording rules
-- ✅ Create comprehensive Grafana dashboards
-- ✅ Troubleshoot monitoring infrastructure
-- ✅ Follow monitoring best practices
-
-## Next Steps
-
-After this workshop, consider:
-
-1. **Alerting**: Configure Prometheus alert rules and Alertmanager
-2. **High Availability**: Set up Prometheus in HA mode
-3. **Long-term Storage**: Configure remote write to Thanos or Cortex
-4. **Security**: Implement authentication and TLS
-5. **Advanced Exporters**: Create multi-metric exporters with histograms and summaries
-6. **Grafana Provisioning**: Automate dashboard deployment
-7. **Custom Integrations**: Integrate with CI/CD pipelines
-
 ## Contributing
 
 If you find issues or have suggestions for improving this workshop, please open an issue or submit a pull request.
 
-## License
-
-This workshop is provided for educational purposes.
-
----
-
-**Happy Monitoring!** 🚀📊

@@ -30,13 +30,12 @@ Complete the `starter/app-exporter.service` file by:
 
 1. Find the existing target file for the compute node in `/etc/prometheus/targets` 
 Adding a new target configuration for the app_exporter
-2. The exporter runs on `worker-node:8000`
+2. The exporter runs on `worker-node:8000` Dont forget to change worker-node to your worker node hostname name.
 3. Add the new exporter to appropriate target file.
 
 ## Deployment Steps
 
 ### On Worker Node:
-
 
 1. Copy the service file:
    ```bash
@@ -64,17 +63,26 @@ Adding a new target configuration for the app_exporter
 
 The following are examples only. 
 
-1. Validate Prometheus configuration using promtool:
+1. Edit /etc/prometheus/targets/worker-node.json (replace worker-node with your worker node hostname)
+
+2. Add the new target to /etc/prometheus/targets/worker-node.json (replace worker-node with your worker node hostname)
+
+3. Validate json file using jq:
+   ```bash
+   jq . /etc/prometheus/targets/worker-node.json
+   ```
+
+4. Validate Prometheus configuration using promtool:
    ```bash
    promtool check config /etc/prometheus/prometheus.yml
    ```
 
-2. Validate the service discovery file:
+5. Validate the service discovery file:
    ```bash
    promtool check sd-file /etc/prometheus/targets/worker-node.json
    ```
 
-3. **Query Prometheus**: Test that metrics are being scraped
+6. **Query Prometheus**: Test that metrics are being scraped. Replace controller-node with your controller node hostname.
    ```bash
    curl 'http://controller-node:9090/api/v1/query?query=app_active_sessions' | jq
    ```
@@ -83,14 +91,11 @@ The following are examples only.
 
 - Systemd service should be running without errors
 - `promtool check sd-file` should return SUCCESS
-- Prometheus targets page should show app_exporter as UP
 - Query for `app_active_sessions` should return data
 
 ## Troubleshooting
 
 - **Service won't start**: Check logs with `sudo journalctl -u app-exporter.service -f`
-- **Target shows as DOWN**: Verify network connectivity and firewall rules
-- **Invalid JSON**: Use `jq` to validate: `jq . file_sd_config.json`
 
 ## Learning Points
 - Systemd service configuration for Python applications
