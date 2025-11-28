@@ -23,7 +23,7 @@ For subsequent panels
 
 1. Select Prometheus (default) as the data source
 
-2. [New Panel](../../../images/new-panel.png)
+2. ![New Panel](../../../images/new-panel.png)
    1. Make sure Prometheus is the datasource
    2. Write your PromQL query here
    3. Expand legend options, select Custom, add labels in here in this format `{{ hostname }}`

@@ -90,13 +90,11 @@ The `starter/dashboard_steps.md` file guides you through:
 
 - [ ] Dashboard loads without errors
 - [ ] All 4 panels display data
-- [ ] Auto-refresh works (5-30 seconds)
-- [ ] Time range selector works
 - [ ] Queries execute successfully (no red errors)
 - [ ] Units are properly configured
 - [ ] Dashboard has a meaningful name
-- [ ] Panels are organized logically
-- [ ] Legends show instance information
+- [ ] Panels are organized as per design
+- [ ] Legends show hostname
 
 
 ## Dashboard Best Practices
@@ -109,25 +107,6 @@ The `starter/dashboard_steps.md` file guides you through:
 6. **Refresh Rate**: Balance freshness with load (10-30s)
 7. **Legend**: Show instance/host information
 8. **Thresholds**: Use industry-standard thresholds
-
-## Exporting and Sharing
-
-### Export Dashboard JSON:
-1. Dashboard settings → JSON Model
-2. Copy JSON to file
-3. Commit to version control
-
-### Import Dashboard:
-1. Click + → Import
-2. Paste JSON or upload file
-3. Select Prometheus data source
-4. Import
-
-### Share Dashboard:
-1. Click share icon
-2. Get snapshot or direct link
-3. Set expiration time
-4. Share URL with team
 
 ## Resources
 
