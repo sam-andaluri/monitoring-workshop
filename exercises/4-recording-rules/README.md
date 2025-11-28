@@ -17,31 +17,19 @@ Learn how to create Prometheus recording rules to pre-compute frequently used or
 3. **Dashboards**: Faster dashboard load times
 4. **Alerting**: More efficient alert evaluation
 
-### Naming Convention
-
-Recording rules should follow this naming pattern:
-```
-level:metric:operations
-```
-
-Examples:
-- `job:api_requests:rate5m` - Job-level request rate over 5 minutes
-- `instance:cpu_usage:percent` - Instance-level CPU usage percentage
-- `app:active_sessions:avg5m` - Application-level average sessions
-
 ## Task
 
-Complete the `starter/recording_rules.yml` file by creating 2 recording rules:
+Complete the `starter/workshop_recording_rules.yml` file by creating 2 recording rules:
 
-### Problem 1: App Exporter Recording Rule
+### Task 1: App Exporter Recording Rule
 Create a recording rule that pre-computes the 5-minute average of active sessions.
-- **Rule name**: `app:active_sessions:avg5m`
+- **Rule name**: `app_active_sessions_avg5m`
 - **Source metric**: `app_active_sessions`
 - **Operation**: Calculate 5-minute average
 
-### Problem 2: Node Exporter Recording Rule
+### Task 2: Node Exporter Recording Rule
 Create a recording rule that pre-computes CPU usage percentage by instance.
-- **Rule name**: `instance:cpu_usage:percent`
+- **Rule name**: `instance_cpu_usage_percent`
 - **Source metric**: `node_cpu_seconds_total`
 - **Operation**: Calculate CPU usage percentage (reuse logic from Exercise 3)
 
@@ -49,35 +37,36 @@ Create a recording rule that pre-computes CPU usage percentage by instance.
 
 ### 1. Complete the Recording Rules File
 
-Edit `starter/recording_rules.yml` and fill in the TODOs.
+Edit `starter/workshop_recording_rules.yml` and fill in the TODOs.
 
 ### 2. Validate the Rules File
 
 Use promtool to validate syntax:
 
 ```bash
-promtool check rules starter/recording_rules.yml
+promtool check rules starter/workshop_recording_rules.yml
 ```
 
 Expected output:
 ```
-Checking starter/recording_rules.yml
+Checking starter/workshop_recording_rules.yml
   SUCCESS: 2 rules found
 ```
 
-### 3. Copy Rules to Prometheus
+### 3. Copy the rules
 
 ```bash
-sudo cp starter/recording_rules.yml /etc/prometheus/rules/recording_rules.yml
+sudo cp starter/workshop_recording_rules.yml /etc/prometheus/workshop_recording_rules.yml
 ```
 
-### 4. Update Prometheus Configuration
+### 4. Update Prometheus Configuration to add your workshop recording rules
 
 Ensure your `/etc/prometheus/prometheus.yml` includes the rule file:
 
 ```yaml
 rule_files:
-  - /etc/prometheus/rules/*.yml
+  - recording_rules.yml (Existing)
+  - workshop_recording_rules.yml (New)
 ```
 
 ### 5. Validate Prometheus Configuration

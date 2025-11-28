@@ -4,7 +4,7 @@ groups:
     rules:
       # Recording rule for average active sessions over 5 minutes
       # This pre-computes the average to improve query performance
-      - record: app:active_sessions:avg5m
+      - record: app_active_sessions_avg5m
         expr: avg_over_time(app_active_sessions[5m])
 
   - name: node_recording_rules
@@ -12,5 +12,5 @@ groups:
     rules:
       # Recording rule for CPU usage percentage per instance
       # Pre-computes CPU usage to avoid expensive calculations at query time
-      - record: instance:cpu_usage:percent
+      - record: instance_cpu_usage_percent
         expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
