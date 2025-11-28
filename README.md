@@ -23,7 +23,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ## Exercises
 
-### [Exercise 1: Create a Basic Prometheus Exporter](exercises/exercise1/)
+### [Exercise 1: Create a Basic Prometheus Exporter](exercises/1-exporter/README.md)
 **Objective**: Learn to create a custom Prometheus exporter using Python's `prometheus_client` library.
 
 **Topics Covered**:
@@ -36,7 +36,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 2: Configure Systemd Service and Prometheus Service Discovery](exercises/exercise2/)
+### [Exercise 2: Configure Systemd Service and Prometheus Service Discovery](exercises/2-targets/README.md)
 **Objective**: Deploy the exporter as a system service and configure Prometheus to scrape it.
 
 **Topics Covered**:
@@ -49,7 +49,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 3: Writing PromQL Queries](exercises/exercise3/)
+### [Exercise 3: Writing PromQL Queries](exercises/3-promql/README.md)
 **Objective**: Learn Prometheus Query Language (PromQL) to query and analyze metrics.
 
 **Topics Covered**:
@@ -62,7 +62,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 4: Prometheus Recording Rules](exercises/exercise4/)
+### [Exercise 4: Prometheus Recording Rules](exercises/4-recording-rules/README.md)
 **Objective**: Create recording rules to pre-compute expensive queries for better performance.
 
 **Topics Covered**:
@@ -75,7 +75,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 5: Manual Grafana Dashboard Creation](exercises/exercise5/)
+### [Exercise 5: Manual Grafana Dashboard Creation](exercises/5-manual-dashboard/README.md)
 **Objective**: Build a comprehensive monitoring dashboard in Grafana.
 
 **Topics Covered**:
@@ -89,7 +89,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 6: Advanced Topics](exercises/exercise6/)
+### [Exercise 6: Advanced Topics](exercises/6-grafonnet-dashboard/README.md)
 **Objective**: Reserved for custom advanced content.
 
 **Status**: Placeholder - to be completed based on specific needs
