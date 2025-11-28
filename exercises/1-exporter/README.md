@@ -23,8 +23,10 @@ Look for `TODO` comments in the starter code.
 
 ## Testing Your Solution
 
-1. Run the exporter:
-   ```bash
+1. Run the exporter (source the venv since default packages in latest 3.0.0 are only installed in oci env):
+
+   ```bash   
+   source /config/venv/Ubuntu_22.04_x86_64/oci/bin/activate
    cd monitoring-workshop/exercises/1-exporter/starter
    python3 app_exporter.py
    ```
@@ -41,7 +43,7 @@ Look for `TODO` comments in the starter code.
    app_active_sessions 45.0
    ```
 
-4. Run curl command multiple times to see the value change every 5 seconds.
+4. Ctrl-C from the session where app_exporter.py is running in the terminal to free up the port and to proceed to next exercise.
 
 ## Expected Output
 - The `/metrics` endpoint should expose the `app_active_sessions` metric

@@ -5,7 +5,11 @@ import random
 
 # Define a Gauge metric named 'app_active_sessions'
 # with the description 'Number of active user sessions'
+
 app_active_sessions = Gauge('app_active_sessions', 'Number of active user sessions')
+
+# (Optional) with custom labels
+# app_active_sessions = Gauge('app_active_sessions', 'Number of active user sessions', ['env'])
 
 
 def collect_metrics():
@@ -16,6 +20,9 @@ def collect_metrics():
 
         # Set the gauge metric value to active_sessions
         app_active_sessions.set(active_sessions)
+
+        # (Optional) If using custom labels, set the value like this:
+        # app_active_sessions.labels(env="prod").set(active_sessions)
 
         # Wait 5 seconds before next collection
         time.sleep(5)

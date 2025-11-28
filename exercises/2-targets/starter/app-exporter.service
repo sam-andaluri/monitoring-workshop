@@ -7,7 +7,7 @@ Type=simple
 User=prometheus
 
 # TODO: Set the ExecStart to run the Python exporter script
-# Hint: ExecStart= /path/to/file/app_exporter.py
+# Hint: ExecStart= /config/venv/python3 /path/to/file/app_exporter.py
 # ?
 
 Restart=on-failure

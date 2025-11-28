@@ -9,6 +9,9 @@ import random
 # https://prometheus.github.io/client_python/instrumenting/gauge/
 # app_active_sessions = Guage(name, description)
 
+# (Optional) with custom labels
+# app_active_sessions = Guage(name, description, labels[])
+
 
 def collect_metrics():
     """Simulate collecting application metrics"""
@@ -21,13 +24,15 @@ def collect_metrics():
         # Hint: use the .set() method
         # app_active_sessions.set(variable_name)
 
+        # (Optional) If using custom labels, set the value like this:
+        # app_active_sessions.labels(env="prod").set(variable_name)
+
         # This is the interval that this metrics will be updated. 
         # Wait 5 seconds before next collection
         time.sleep(5)
 
 
 if __name__ == '__main__':
-    # Start the HTTP server on port 8000
     # TODO: Start the prometheus metrics HTTP server on port 8000
     # Hint: use start_http_server(port)
     # ?

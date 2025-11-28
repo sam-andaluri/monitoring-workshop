@@ -5,8 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=prometheus
-WorkingDirectory=/opt/exporters/app_exporter
-ExecStart=/usr/bin/python3 /opt/exporters/app_exporter/app_exporter.py
+ExecStart=/config/venv/Ubuntu_22.04_x86_64/oci/bin/python3 /usr/local/bin/app_exporter.py
 Restart=on-failure
 RestartSec=5
 

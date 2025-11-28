@@ -96,12 +96,12 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-## Workshop Structure
+## Exercise Structure
 
 Each exercise contains:
 
 ```
-exercise<N>/
+<exercise-name>/
 ├── README.md           # Exercise instructions and learning objectives
 ├── starter/            # Incomplete files with TODOs for participants
 │   └── ...
@@ -148,12 +148,11 @@ promtool --version
 
 ### 3. Start with Exercise 1
 
-```bash
-cd exercises/exercise1
-cat README.md
-```
+> Note: if you forked workshop repo the URL below would be different
 
-Follow each exercise in order, as they build upon each other.
+https://github.com/sam-andaluri/monitoring-workshop/blob/main/README.md
+
+> Follow each exercise in order, as they build upon each other.
 
 ## Workshop Flow
 
@@ -166,58 +165,10 @@ Exercise 3: Query Metrics (PromQL)
      ↓
 Exercise 4: Optimize with Recording Rules
      ↓
-Exercise 5: Visualize in Grafana
+Exercise 5: Grafana
      ↓
-Exercise 6: Advanced Topics
+Exercise 6: Grafonnet
 ```
-
-## Validation Tools
-
-Throughout the workshop, you'll use these tools to validate your work:
-
-```bash
-# Validate Prometheus config
-promtool check config /etc/prometheus/prometheus.yml
-
-# Validate recording rules
-promtool check rules /path/to/rules.yml
-
-# Validate service discovery file
-promtool check sd-file /path/to/targets.json
-
-# Query Prometheus
-
-
-# Check systemd service status
-systemctl status app-exporter.service
-
-# View service logs
-journalctl -u app-exporter.service -f
-```
-
-## Troubleshooting
-
-### Common Issues:
-
-**Exporter won't start**:
-```bash
-# Check logs
-sudo journalctl -u app-exporter.service -n 50
-
-# Verify Python script
-python3 /path/to/app_exporter.py
-
-# Check permissions
-ls -la /opt/exporters/app_exporter/
-```
-
-**Prometheus not scraping target**:
-```bash
-# Check targets page
-http://controller-node:9090/targets
-
-# Verify network connectivity
-curl http://worker-node:8000/metrics
 
 ## Resources
 
@@ -226,11 +177,13 @@ curl http://worker-node:8000/metrics
 - [Grafana Documentation](https://grafana.com/docs/)
 - [Prometheus Python Client](https://github.com/prometheus/client_python)
 - [PromQL Basics](https://prometheus.io/docs/prometheus/latest/querying/basics/)
+- [Grafonnet](https://grafana.github.io/grafonnet/index.html)
 
 ### Community Resources:
 - [Prometheus Best Practices](https://prometheus.io/docs/practices/)
 - [Grafana Community Dashboards](https://grafana.com/grafana/dashboards/)
 - [Node Exporter Full Dashboard](https://grafana.com/grafana/dashboards/1860)
+
 
 ## Contributing
 
