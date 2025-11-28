@@ -39,10 +39,10 @@ Calculate the idle CPU usage percentage from node_exporter metrics.
 **Expected Result**: CPU usage percentage per instance
 
 > Hints:
-- `node_cpu_seconds_total{mode="idle"}` gives idle CPU time
-- `rate(...[5m])` calculates the per-second rate over 5 minutes
-- `avg by(instance)` averages across all CPU cores for each instance
-- Subtracting idle percentage from 100 gives usage percentage
+>- `node_cpu_seconds_total{mode="idle"}` gives idle CPU time
+>- `rate(...[5m])` calculates the per-second rate over 5 minutes
+>- `avg by(instance)` averages across all CPU cores for each instance
+>- Subtracting idle percentage from 100 gives usage percentage
 
 ---
 
@@ -69,11 +69,11 @@ Calculate the disk usage percentage for the root filesystem.
 **Expected Result**: Disk usage percentage for root filesystem
 
 > Hints:
-- `node_filesystem_avail_bytes` gives available bytes
-- `node_filesystem_size_bytes` gives total size
-- Division gives available ratio
-- Subtracting from 1 gives used ratio
-- Multiplying by 100 converts to percentage
+>- `node_filesystem_avail_bytes` gives available bytes
+>- `node_filesystem_size_bytes` gives total size
+>- Division gives available ratio
+>- Subtracting from 1 gives used ratio
+>- Multiplying by 100 converts to percentage
 
 ---
 
