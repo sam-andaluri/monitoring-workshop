@@ -2,7 +2,7 @@ groups:
   - name: app_recording_rules
     interval: 30s
     rules:
-      # Problem 1: Create a recording rule for average active sessions over 5 minutes
+      # Task 1: Create a recording rule for average active sessions over 5 minutes
       # TODO: Complete the recording rule below
       # Rule name should be: app:active_sessions:avg5m
       # It should calculate the 5-minute average of app_active_sessions
@@ -12,7 +12,7 @@ groups:
   - name: node_recording_rules
     interval: 30s
     rules:
-      # Problem 2: Create a recording rule for CPU usage percentage
+      # Task 2: Create a recording rule for CPU usage percentage
       # TODO: Complete the recording rule below
       # Rule name should be: instance:cpu_usage:percent
       # It should calculate CPU usage percentage by instance
