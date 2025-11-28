@@ -52,6 +52,13 @@ The following are optional bonus queries (if you have time)
 
 ## Testing Your Queries
 
+### Use Grafana UI - Explorer
+
+1. Find your Grafana URL and password from Resource Manager->Stack->App Information tab
+2. Navigate to your monitoring URL (obtained from 1.), login with admin and password (obtained from 1.)
+3. In Grafana, look for "Explore" in left hand side menu, switch to code mode. See [this](../../images/Grafana-Explore-1.png) and [this](../../images/Grafana-Explore-2.png)
+4. In Explore, type your promql expressions in text box as shown in the second image and click on blue "Run Query" button. Each time you change the promql you need to click "Run Query" button. 
+
 ### Use promtool:
 
 ```bash
