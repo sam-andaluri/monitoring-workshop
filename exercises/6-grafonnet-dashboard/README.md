@@ -1,4 +1,4 @@
-# Exercise 6: Advanced Topics (To Be Completed)
+# Exercise 6: Grafonnet
 
 ## Objective
 
