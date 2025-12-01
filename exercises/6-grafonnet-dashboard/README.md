@@ -41,5 +41,11 @@ Grafonnet turns fragile, bloated Grafana JSON into clean, reusable code to cut r
 └──────────────────────────┴──────────────────────────┘
 ```
 
+## References
+
+[Grafonnet Docs](https://grafana.github.io/grafonnet/index.html)
+
+[Grafonnet Units and Value formats](https://github.com/grafana/grafana/blob/main/packages/grafana-data/src/valueFormats/categories.ts)
+
 ## [Start here](../6-grafonnet-dashboard/starter/grafonnet-dashboard.md)
 
