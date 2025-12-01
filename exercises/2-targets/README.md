@@ -94,3 +94,29 @@ Adding a new target configuration for the app_exporter
 - File-based service discovery in Prometheus
 - Using promtool for configuration validation
 - Service management with systemctl
+
+## Thought Experiment 1
+
+Keep this insight in mind when using dashboards to debug a performance issue. It is important to understand how exports refresh and how prometheus scrapes. Currently we use 1 minute scrapes and exporter may refresh at much finer interval than that (15 seconds or 30 seconds). You will only see the scraped data. You will never see exporter's refreshed data since unless prometheus scrapes that data point never existed.  
+
+For performance issues, it is very difficult to rely on 1 minute snapshots. I would rather prefer a 1 second scrape. But some exporters have heavier processing overhead for example: an exporter that uses say `nvidia-smi` output and parses the values. So 1 second exporter refresh and 1 second prometheus scrape are hard to implement. But we could define a standard exporter refresh and a corresponding prometheus scrape which is finer than 1 minute. For example say 15 seconds. 
+
+Currently in our stack as of today, we have a plan to migrate off of `nvidia-smi` based output parsing and to solely rely on DCGM metrics or AMD metrics. This provides a way to reduce scrape intervals to provide fresh and granular data.
+
+The other side of this coin is Prometheus storage and compute/memmory allocation. If you do plan to decrease scrape interval, you would need to consider increasing storage (block volumes with a higher performance trier), increase compute OCPUs and memory. When storage increases, so does the time for prometheus to find metrics in it's database and serve it back to Grafana.
+
+| Time | Exporter refresh (every 15s) — value | Prometheus scrape (every 60s) | Scraped value |
+|------:|:------------------------------------:|:-----------------------------:|:-------------:|
+| 0s    | refresh → 1                          | scrape → YES                  | 1             |
+| 15s   | refresh → 2                          | NO                            | —             |
+| 30s   | refresh → 3                          | NO                            | —             |
+| 45s   | refresh → 4                          | NO                            | —             |
+| 60s   | refresh → 5                          | scrape → YES                  | 5             |
+| 75s   | refresh → 6                          | NO                            | —             |
+| 90s   | refresh → 7                          | NO                            | —             |
+| 105s  | refresh → 8                          | NO                            | —             |
+| 120s  | refresh → 9                          | scrape → YES                  | 9             |
+| 135s  | refresh → 10                         | NO                            | —             |
+| 150s  | refresh → 11                         | NO                            | —             |
+| 165s  | refresh → 12                         | NO                            | —             |
+| 180s  | refresh → 13                         | scrape → YES                  | 13            |

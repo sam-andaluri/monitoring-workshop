@@ -2,6 +2,12 @@
 
 A hands-on workshop for learning Prometheus and Grafana as it is deployed and used in our stack through practical exercises.
 
+## Monitoring Architecture
+
+This is our current monitoring architecture in our HPC stack. We are implementing a small but representative portion of it in a sandbox. After deploying your sandbox stack you should have 2 nodes. One node with grafana and prometheus and another to represent a single compute node.
+
+![Monitoring Architecture](./images/GPUMonitoring.png)
+
 ## Workshop Overview
 
 This workshop consists of 6 progressive exercises that teach you how to build a complete monitoring solution using Prometheus and Grafana.

@@ -106,3 +106,67 @@ promtool query instant http://localhost:9090 'instance_cpu_usage_percent'
 
 ## [Start here](../4-recording-rules/README.md)
 
+## Thought Experiment 2
+
+### Law of Averages and Percentiles 
+
+Assume the following CPU usage percentages scraped by Prometheus.
+
+| Time (min) | CPU (%) |
+|:----------:|:-------:|
+| 0m         | 12      |
+| 1m         | 18      |
+| 2m         | 7       |
+| 3m         | 100     |
+| 4m         | 22      |
+| 5m         | 15      |
+| 6m         | 100     |
+| 7m         | 9       |
+| 8m         | 30      |
+| 9m         | 100     |
+| 10m        | 5       |
+| 11m        | 27      |
+| 12m        | 14      |
+| 13m        | 100     |
+| 14m        | 40      |
+| 15m        | 8       |
+| 16m        | 23      |
+| 17m        | 19      |
+| 18m        | 6       |
+| 19m        | 11      |
+
+Values array:
+[12, 18, 7, 100, 22, 15, 100, 9, 30, 100, 5, 27, 14, 100, 40, 8, 23, 19, 6, 11]
+
+Summary statistics
+- n = 20
+- sum = 666
+- mean = 666 / 20 = 33.3% (Law of Averages)
+
+### Observe
+
+If you look at the average CPU usage it's 33.3%. Customer says there are occassions when their application had slowed down significantly. But the data says probably this node was used only 1/3. This is how averages mislead us.
+
+A better way is to look at percentiles. If you look at our Monitoring within HPC Stack, we adopted 99th, 95th and 90th percentiles to capture these tails. If you look at the 95th and 90th percentiles in the example below, you can see the 100% usage missed by averages. 
+
+Sorted values (ascending):
+
+[5, 6, 7, 8, 9, 11, 12, 14, 15, 18, 19, 22, 23, 27, 30, 40, 100, 100, 100, 100]
+
+Percentiles (interpolated method: rank = p/100 * (n+1), n+1 = 21)
+- p25: rank = 5.25 → between 5th (9) and 6th (11) → 9 + 0.25×(11−9) = **9.5%**
+- p50 (median): rank = 10.5 → between 10th (18) and 11th (19) → **18.5%**
+- p75: rank = 15.75 → between 15th (30) and 16th (40) → 30 + 0.75×10 = **37.5%**
+- p90: rank = 18.9 → between 18th (100) and 19th (100) → **100%**
+- p95: rank = 19.95 → effectively max → **100%**
+
+Interpretation
+- Mean = 33.3% — reflects average but biased by rare 100% spikes.
+- Median (p50 = 18.5%) — better represents typical CPU in this skewed series.
+- p75 = 37.5% and p90/p95 = 100% — show tail behavior and frequency/severity of spikes.
+- For SLOs and tail-latency-like CPU spike detection prefer p90/p95; for overall load use mean but note sensitivity to outliers.
+
+Practical note
+- When reporting percentiles, state the calculation method (nearest-rank vs interpolated) and sample window (here: 20 samples at 1m).
+- In Prometheus, compute percentiles with histogram summaries or recording rules to avoid expensive repeated queries.
+
