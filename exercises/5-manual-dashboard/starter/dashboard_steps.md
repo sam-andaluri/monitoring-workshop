@@ -31,11 +31,14 @@ For subsequent panels
    5. Configure panel options e.g. units
    6. Save dashboard
 
-## Step 5. Exporting dashboards
+## Step 5: (Optional) Explore adding variables (TODO)
+
+## Step 6: Exporting dashboards
    
 ![Export as code](../../../images/db-export-code.png)
 
 *IMPORTANT*
+
 ![Export for sharing externally](../../../images/db-export.png)
    
 ## Validation Checklist

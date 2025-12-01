@@ -1,27 +1,44 @@
 # Exercise 6: Advanced Topics (To Be Completed)
 
 ## Objective
-This exercise is intentionally left blank for custom content and advanced topics.
 
-## Placeholder
+Use HPC Stack Grafonnet design elements and libraries to generate the dashboard
 
-This space is reserved for additional workshop content such as:
+## Prerequisites
+- Completed Exercises 1-5
+- Grafana installed and running on controller node
+- Prometheus configured as a Grafana data source
+- Metrics available from app_exporter and node_exporter
 
-- Alerting rules configuration
-- Alert manager setup
-- Advanced dashboard features
-- Grafana provisioning
-- Custom exporters with multiple metrics
-- Integration with other monitoring tools
-- Performance tuning
-- High availability setup
-- Security hardening
-- Or any other advanced monitoring topics
+## Background
 
-## Structure
+Grafonnet turns fragile, bloated Grafana JSON into clean, reusable code to cut redundancy, speed updates, and keep large dashboards maintainable.
 
-The `starter/` and `solution/` directories are available for your custom content.
+- DRY and modular: Replace hundreds of repeated JSON lines with composable, parameterized snippets.
+- Easier maintenance: Centralize common attributes; update once, propagate everywhere.
+- Readable diffs and reviews: Small, meaningful changes instead of 700–800 line JSON edits.
+- Version-control friendly: Treat dashboards like code—branch, review, and rollback confidently.
+- Safer, faster iteration: Validate, lint, and generate dashboards via CI/CD, reducing human error.
+- Scales with contributions: Standardized libraries and templates make external PRs simpler to review and merge.
 
----
+## Expected Dashboard Layout
 
-**Note**: This exercise will be developed separately based on specific workshop needs.
+```
+┌─────────────────────────────────────────────────────┐
+│  Workshop Monitoring Dashboard                      │
+├──────────────────────────┬──────────────────────────┤
+│                          │                          │
+│   Active User Sessions   │    Idle CPU Usage by     │
+│         [STAT]           │    Host.                 │
+│          45              │    [TIME SERIES]         │
+│                          │                          │
+├──────────────────────────┼──────────────────────────┤
+│                          │                          │
+│   Memory Available in GB │    Disk Usage (/)        │
+│   [TIME SERIES]          │    [GAUGE]               │
+│                          │      65%                 │
+│                          │                          │
+└──────────────────────────┴──────────────────────────┘
+```
+
+
