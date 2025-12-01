@@ -22,6 +22,7 @@ g.dashboard.new('Workshop Dashboard')
     statPanel(
       'Active User Sessions',
       '?? promql',
+      '?? legend',
       {w:?, h:?, x:?, y:?}
     ),
     timeseriesPanel(
