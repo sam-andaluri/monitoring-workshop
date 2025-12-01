@@ -103,3 +103,6 @@ promtool query instant http://localhost:9090 'instance_cpu_usage_percent'
 - Deploying and managing rule files
 - Performance optimization strategies
 - Rule evaluation intervals
+
+## [Start here](../4-recording-rules/README.md)
+

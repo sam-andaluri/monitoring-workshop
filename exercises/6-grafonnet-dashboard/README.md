@@ -41,4 +41,5 @@ Grafonnet turns fragile, bloated Grafana JSON into clean, reusable code to cut r
 └──────────────────────────┴──────────────────────────┘
 ```
 
+## [Start here](../6-grafonnet-dashboard/starter/grafonnet-dashboard.md)
 

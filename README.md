@@ -76,7 +76,7 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 ---
 
 ### [Exercise 5: Manual Grafana Dashboard Creation](exercises/5-manual-dashboard/README.md)
-**Objective**: Build a comprehensive monitoring dashboard in Grafana.
+**Objective**: Build a manual monitoring dashboard in Grafana.
 
 **Topics Covered**:
 - Dashboard and panel creation
@@ -89,10 +89,15 @@ As a pre-requisite you should have created a 2 node cluster using HPC 3.0.0 stac
 
 ---
 
-### [Exercise 6: Advanced Topics](exercises/6-grafonnet-dashboard/README.md)
-**Objective**: Reserved for custom advanced content.
+### [Exercise 6: Grafonnet](exercises/6-grafonnet-dashboard/README.md)
+**Objective**: Build a Dashboard-as-Code automated dashboard creation using Grafonnet
 
-**Status**: Placeholder - to be completed based on specific needs
+**Topics Covered**:
+- HPC Stack Dashboard components
+- Visualization types (Time Series, Stat, Gauge)
+- Panel configuration and styling
+- Dashboard variables and templating
+
 
 ---
 

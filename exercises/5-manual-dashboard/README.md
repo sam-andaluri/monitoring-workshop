@@ -123,3 +123,5 @@ The `starter/dashboard_steps.md` file guides you through:
 - Variables and templating basics
 - Dashboard settings and time controls
 - Best practices for effective dashboards
+
+## [Start here](../5-manual-dashboard/starter/dashboard_steps.md

@@ -107,3 +107,5 @@ Each query should:
 - Using aggregation functions
 - Metric arithmetic and transformations
 - Label filtering and grouping
+
+## [Start here](../3-promql/README.md)

@@ -98,7 +98,7 @@ The following command are for your information. I provided a convenient Makefile
 /usr/local/bin/jsonnet -J vendor workshop-dashboard.jsonnet -o workshop-dashboard.json
 ```
 
-## Post dashboard to Grafana
+Post dashboard to Grafana
 
 Replace `<password>` with your Grafana admin password obtained from Stack
 ```
