@@ -13,4 +13,4 @@ function(title, promql, legend, gridPos)
     + g.panel.gauge.gridPos.withH(gridPos.h)
     + g.panel.gauge.gridPos.withX(gridPos.x)
     + g.panel.gauge.gridPos.withY(gridPos.y)
-   
+

@@ -1,15 +1,13 @@
 local g = import './g.libsonnet';
 local variables = import './workshop-dashboard-variables.libsonnet';
 local timeseriesPanel = import './timeseries-panel.libsonnet';
-local statPanel = import './stat-panel-single.libsonnet';
-local tempGuagePanel = import './gauge-panel.libsonnet';
-local statPanelXid = import './stat-panel.libsonnet';
+local statPanel = import './stat-panel.libsonnet';
 local utilGaugePanel = import './gauge-panel-util.libsonnet';
 
-g.dashboard.new('NVIDIA GPU Metrics')
-+ g.dashboard.withUid('nvidia-gpu-metrics-single')
+g.dashboard.new('Workshop Dashboard')
++ g.dashboard.withUid('workshop-dashboard')
 + g.dashboard.withDescription(|||
-  GPU Metrics Dashboard for a single cluster node.
+  Workshop Dashboard
 |||)
 + g.dashboard.withTimezone('browser')
 + g.dashboard.withRefresh('30s')
@@ -42,7 +40,8 @@ g.dashboard.new('NVIDIA GPU Metrics')
     ),
     utilGaugePanel(
       'Disk Usage',
-      'avg by (Hostname) (DCGM_FI_DEV_GPU_UTIL{Hostname=~"$hostname", oci_name=~"$oci_name"})',
-      {w:4, h:4, x:12, y:0}
+      '?? promql',
+      '?? legend'
+      {w:?, h:?, x:?, y:?}
     ),    
 ])

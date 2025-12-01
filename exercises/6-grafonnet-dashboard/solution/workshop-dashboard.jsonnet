@@ -5,7 +5,7 @@ local statPanel = import './stat-panel.libsonnet';
 local utilGaugePanel = import './gauge-panel-util.libsonnet';
 
 g.dashboard.new('Workshop Dashboard')
-+ g.dashboard.withUid('workshop-dashboard-sam')
++ g.dashboard.withUid('workshop-dashboard')
 + g.dashboard.withDescription(|||
   Workshop Dashboard
 |||)
@@ -22,6 +22,7 @@ g.dashboard.new('Workshop Dashboard')
     statPanel(
       'Active User Sessions',
       'round(app_active_sessions_avg5m)',
+      '{{hostname}}',
       {w:4, h:8, x:0, y:0}
     ),
     timeseriesPanel(
@@ -43,5 +44,5 @@ g.dashboard.new('Workshop Dashboard')
       'round((1 - (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"})) * 100)',
       '{{hostname}}',
       {w:12, h:8, x:12, y:8}
-    ),     
+    ),
 ])

@@ -12,23 +12,26 @@ Open [workshop-dashboard.jsonnet](workshop-dashboard.jsonnet) and follow along
 Modular files help to make changes to dashboard consistent. All `libsonnet` files are reusable or global files that each dashboard imports. This is similar to how you import python packages from prebuilt libraries. Only exception is that the `.libsonnet` files exist in the current directory in our stack.
 
 ```
-local g = import './g.libsonnet';
 local variables = import './workshop-dashboard-variables.libsonnet';
 local timeseriesPanel = import './timeseries-panel.libsonnet';
-local statPanel = import './stat-panel-single.libsonnet';
-local tempGuagePanel = import './gauge-panel.libsonnet';
-local statPanelXid = import './stat-panel.libsonnet';
+local statPanel = import './stat-panel.libsonnet';
 local utilGaugePanel = import './gauge-panel-util.libsonnet';
 ```
 
-### Dashboard setup
+### Dashboard configuration
 This section of the code represents Dashboard configuration which contains Title, description, timezone (here we choose browser timezone), refresh interval (how often you want to refresh the dashboard), `withFrom('now-5m')` indicates data freshness here that means show me the last 5 minutes data. `withVariables` renders the top filter bar as shown in screenshot below. We don't need this for the dashboard we are building and we did't cover this in our manual dashboard build either. But we can keep the code for variables which would be useful to understand the concept.
+![Variables](../../../images/variables.png)
+
+> **1** in the screenshot refers to `withVariables` where you define the variables.
+
+> **2** in the screenshot refers to values of the variables that are queried from prometheus, take a look at [workshop-dashboard-variables.libsonnet](workshop-dashboard-variables.libsonnet)
+
 
 ```
-g.dashboard.new('Command Center')
-+ g.dashboard.withUid('command-center')
+g.dashboard.new('Workshop Dashboard')
++ g.dashboard.withUid('workshop-dashboard-sam')
 + g.dashboard.withDescription(|||
-  Command Center
+  Workshop Dashboard
 |||)
 + g.dashboard.withTimezone('browser')
 + g.dashboard.withRefresh('30s')
@@ -36,13 +39,46 @@ g.dashboard.new('Command Center')
 + g.dashboard.graphTooltip.withSharedCrosshair()
 + g.dashboard.withVariables([
   variables.prometheus,
-  variables.cluster,
+  variables.hostname,
+  variables.oci_name,
 ])
 ```
 
-### 
+### Design the panels using predefined functions
+
+Using predefined library functions, we can ensure consistent styling of our dashboards. By using say a component such as timeSeriesPanel you can ensure all time series panels look the same. This also ensures us to make changes consistently. For example, say you want to replace 90th percentile with say 80th percentile across all timeseries panels, you only need to change the library function.
+
+Before
+```
+function(title, promql, legend, unit, gridPos, legendOptions={
+  calcs: ['p99', 'p95', 'p90'],
+  displayMode: 'table',
+  placement: 'right',
+})
+```
+
+After (just changing 1 char, you can ensure all dashboards now have 80th percentile instead of 90th percentile)
+```
+function(title, promql, legend, unit, gridPos, legendOptions={
+  calcs: ['p99', 'p95', 'p80'],
+  displayMode: 'table',
+  placement: 'right',
+})
+```
+
+Now design the panels using Grafonnet.
+
+Hint:
+1. Refer back to the manually created dashboard
+2. Access the Panel Options for the panel obtain, width, height, x and y from the panel json.
+
+![panel json](../../../images/panel-json.png)
+
+Complete the [workshop-dashboard.jsonnet](workshop-dashboard.jsonnet)
 
 ## Setup (one time only)
+
+Remember you will do this only after all the previous steps were completed.
 
 ```
 /usr/local/bin/jb init
@@ -52,13 +88,21 @@ g.dashboard.new('Command Center')
 
 ## Build dashboard
 
+Once you make the changes to workshop-dashboard.jsonnet, 
+1. Set GRAFANA_PASSWORD 
+2. run `make all-deploy`
+
+The following command are for your information. I provided a convenient Makefile in the starter and solution which encasulates all the commands below and provides you ways to build json, deploy separately or together in one step with `all-deploy`
+
 ```
 /usr/local/bin/jsonnet -J vendor workshop-dashboard.jsonnet -o workshop-dashboard.json
 ```
 
 ## Post dashboard to Grafana
 
+Replace `<password>` with your Grafana admin password obtained from Stack
 ```
-curl -X POST -H 'Content-Type: application/json' -H "Authorization: Bearer ${token}" -d "${payload}" "http://localhost:3000/api/dashboards/db"
-
+GRAFANA_PASSWORD="<password>"
+payload="{\"dashboard\": $(jq . workshop-dashboard.json), \"overwrite\": true}"
+curl -X POST $BASIC_AUTH -H 'Content-Type: application/json' -d "${payload}" "http://admin:$GRAFANA_PASSWORD@localhost:3000/api/dashboards/db"
 ```
