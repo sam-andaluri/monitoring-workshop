@@ -58,7 +58,7 @@ Learn how to:
 1. Find the existing target file for the compute node in `/etc/prometheus/targets` 
 Adding a new target configuration for the app_exporter
 
-> The following are examples only. Substitute appropriate hostnames. The solution filel for targets is also an example. *DO NOT USE worker-node.json as is.* Modify the existing target in /etc/prometheus/targets as per workshop instructions 
+> The following are examples only. Substitute appropriate hostnames. The solution file `worker-node.json` and starter file `file_sd_config.json` for targets are examples to give you an idea of what to expect. Do not use them as-is. Modify the existing target in /etc/prometheus/targets as per workshop instructions 
 
 2. Edit /etc/prometheus/targets/worker-node.json (replace worker-node with your worker node hostname)
 

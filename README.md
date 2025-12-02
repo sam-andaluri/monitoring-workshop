@@ -183,6 +183,41 @@ Exercise 5: Grafana
 Exercise 6: Grafonnet
 ```
 
+## Tips
+
+### SSH config
+
+Setting up ~/.ssh/config helps with connecting VSCode to a development host
+
+```config
+Host dev2
+    HostName 1.2.3.4
+    User ubuntu
+    IdentityFile ~/.ssh/sam
+```
+### Connect to dev server from VSCode
+
+1. If you don't have VSCode on your laptop https://code.visualstudio.com/download
+
+2. In order to edit the code on your linux dev server, you need to install VSCode on your dev server, In VSCode, View->Command Palette->Remote SSH: Connect to Host and select `dev2` in my case or the name you configured in `~/.ssh/config`
+
+### Terminal
+
+VSCode includes a terminal in the same window View->Terminal where you can run commands.
+This may be convenient than switching between VSCode and Windows Putty/Mac Terminal.
+
+### Live sharing your VSCode with others for debugging/viewing
+
+You can live share your VSCode window for me/someone to debug/help 
+
+First follow instructions in **Connect to dev server from VSCode** first.
+
+1. Go to https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare#quickstart-sharing
+2. Click on Install
+3. You need to do this for every remote connection.
+4. After that access the live share button in your left handside menu bar in VSCode. See screenshot below:
+![live sharing](./images/liveshare.png)
+
 ## Resources
 
 ### Official Documentation:

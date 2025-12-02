@@ -170,5 +170,5 @@ Practical note
 - When reporting percentiles, state the calculation method (nearest-rank vs interpolated) and sample window (here: 20 samples at 1m).
 - In Prometheus, compute percentiles with histogram summaries or recording rules to avoid expensive repeated queries.
 
-### Further Reading
+### Further reading
 https://online210.psych.wisc.edu/wp-content/uploads/PSY-210_Unit_Materials/PSY-210_Unit05_Materials/Savage_HBR_2002.pdf
