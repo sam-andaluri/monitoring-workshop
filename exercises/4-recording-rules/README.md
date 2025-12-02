@@ -145,9 +145,9 @@ Summary statistics
 
 ### Observe
 
-If you look at the average CPU usage it's 33.3%. Customer says there are occassions when their application had slowed down significantly. But the data says probably this node was used only 1/3. This is how averages mislead us.
+If you look at the average CPU usage it's 33.3%. Let's say a customer says there are occassions when their application had slowed down significantly. But the data says probably this node was used only 1/3. This is how averages mislead us since they hide outliers.
 
-A better way is to look at percentiles. If you look at our Monitoring within HPC Stack, we adopted 99th, 95th and 90th percentiles to capture these tails. If you look at the 95th and 90th percentiles in the example below, you can see the 100% usage missed by averages. 
+A better way is to look at percentiles. If you look at our Monitoring within HPC Stack, we adopted 99th, 95th and 90th percentiles to capture the tails. If you look at the 95th and 90th percentiles in the example below, you can see the 100% usage missed by averages. 
 
 Sorted values (ascending):
 
@@ -170,3 +170,5 @@ Practical note
 - When reporting percentiles, state the calculation method (nearest-rank vs interpolated) and sample window (here: 20 samples at 1m).
 - In Prometheus, compute percentiles with histogram summaries or recording rules to avoid expensive repeated queries.
 
+### Further Reading
+https://online210.psych.wisc.edu/wp-content/uploads/PSY-210_Unit_Materials/PSY-210_Unit05_Materials/Savage_HBR_2002.pdf
